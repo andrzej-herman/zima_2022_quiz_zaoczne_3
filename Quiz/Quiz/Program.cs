@@ -1,10 +1,32 @@
-﻿Console.WriteLine();
+﻿using Quiz;
 
-int x = 5;
-int y;
 
-var z = 23;
-string a = "tekst";
-string b;
+// tworzymy obiekt typu Game
+var game = new Game();
+
+// tworzymy obiekt typu Message
+var message = new Message();
+
+// wyświetlamy ekran powitalny
+message.DisplayWelcomeScreen();
+
+// losujemy pytanie z aktualnej kategorii
+game.GetRandomQuestionFromCurrentCategory();
+
+
+Console.WriteLine(game.CurrentQuestion.Content);
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
