@@ -1,7 +1,7 @@
-﻿1. Utworzyć bazę pytań.
-2. Wyświetlić ekran powitalny
-3. Ustawić kategorię pytania na najniższą (100 pkt).
-4. Wylosować jedno pytanie z aktualnej kategorii.
+﻿1. Utworzyć bazę pytań. => OK
+2. Wyświetlić ekran powitalny => OK
+3. Ustawić kategorię pytania na najniższą (100 pkt). => OK
+4. Wylosować jedno pytanie z aktualnej kategorii. => OK
 5. Wyświetlić treść pytania (z czterema odpowiedziami).
 6. Pobranie odpowiedzi od użytkownika.
 7. Walidacja odpowiedzi użytkownika.

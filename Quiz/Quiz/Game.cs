@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,32 +13,34 @@ namespace Quiz
         {
             CreteAllQuestions();
             CurrentCategory = 100;
+            Random = new Random();
         }
 
         public List<Question> AllQuestions { get; set; }
         public Question CurrentQuestion { get; set; }
         public int CurrentCategory { get; set; }
+        public Random Random { get; set; }
 
         public void CreteAllQuestions()
         {
-            AllQuestions = new List<Question>();
-            var q = new Question();
-            q.Id = 1;
-            q.Category = 100;
-            q.Content = "Jak miał na imię Eintein?";
-            q.Answers = new List<string>();
-            q.Answers.Add("Albert");
-            q.Answers.Add("Aaron");
-            q.Answers.Add("Anthony");
-            q.Answers.Add("Basia");
-            AllQuestions.Add(q);
+            var path = Directory.GetCurrentDirectory() + "\\questions.json";
+            var text = File.ReadAllText(path);
+            AllQuestions = JsonConvert.DeserializeObject<List<Question>>(text); 
         }
 
         public void GetRandomQuestionFromCurrentCategory()
         {
-            // udajamy na razie że losujemy
-            // niby wylosowalismy pytane z CurrentCategory
-            CurrentQuestion = AllQuestions[0];
+            var qFCC = new List<Question>();
+            foreach (var q in AllQuestions)
+            {
+                if (q.Category == CurrentCategory)
+                {
+                    qFCC.Add(q);    
+                }
+            }
+
+            var r = Random.Next(0, qFCC.Count);
+            CurrentQuestion= qFCC[r];   
         }
 
     }

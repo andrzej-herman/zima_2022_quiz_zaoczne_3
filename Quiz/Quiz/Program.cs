@@ -13,8 +13,9 @@ message.DisplayWelcomeScreen();
 // losujemy pytanie z aktualnej kategorii
 game.GetRandomQuestionFromCurrentCategory();
 
+// wyświetlanie pytania
+game.CurrentQuestion.Display();
 
-Console.WriteLine(game.CurrentQuestion.Content);
 
 
 
