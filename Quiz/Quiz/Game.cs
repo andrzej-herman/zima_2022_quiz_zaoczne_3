@@ -30,18 +30,35 @@ namespace Quiz
 
         public void GetRandomQuestionFromCurrentCategory()
         {
-            var qFCC = new List<Question>();
-            foreach (var q in AllQuestions)
-            {
-                if (q.Category == CurrentCategory)
-                {
-                    qFCC.Add(q);    
-                }
+            var qFCC = AllQuestions.Where(x => x.Category == CurrentCategory).ToList();
+            var r = Random.Next(0, qFCC.Count);
+            var question = qFCC[r];
+            question.Answers = question.Answers.OrderBy(x => Random.Next()).ToList();
+            
+            // uzywając petli for
+            //for (int i = 0; i < question.Answers.Count; i++)
+            //{
+            //    question.Answers[i].DisplayOrder = i + 1;
+            //}
+
+            // uzywając pętli foreach
+            var index = 1;
+            foreach (var answer in question.Answers)
+            { 
+                answer.DisplayOrder = index;
+                index++;
             }
 
-            var r = Random.Next(0, qFCC.Count);
-            CurrentQuestion= qFCC[r];   
+            CurrentQuestion = question;
         }
+
+
+        public bool CheckPlayerAnswer(int playerAnswer)
+        {
+            var answer = CurrentQuestion.Answers.FirstOrDefault(x => x.DisplayOrder== playerAnswer);   
+            return answer.IsCorrect;
+        }
+
 
     }
 }

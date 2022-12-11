@@ -13,7 +13,8 @@ namespace Quiz
         public string Content { get; set; }
         public List<Answer> Answers { get; set; }
 
-        public void Display()
+
+        private void ShowQuestion()
         {
             Console.WriteLine();
             Console.WriteLine($"Pytanie za {Category} pkt");
@@ -22,12 +23,52 @@ namespace Quiz
             Console.WriteLine();
             foreach (var answer in Answers)
             {
-                Console.WriteLine($"{answer.Id}. {answer.Content}");
+                Console.WriteLine($"{answer.DisplayOrder}. {answer.Content}");
             }
             Console.WriteLine();
             Console.Write("Naciśnij numer poprawnej oddpowiedzi: 1, 2, 3 lub 4 => ");
-            Console.WriteLine();
         }
+
+
+
+        public int Display()
+        {
+            ShowQuestion();
+            var playerAnswer = Console.ReadLine();
+            var correctKey = IsCorrectKey(playerAnswer);
+            while (!correctKey)
+            {
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Clear();
+                Console.WriteLine("Nacisnąłeś nieprawidłowy klawisz !!!");
+                Console.ForegroundColor = ConsoleColor.White;
+                ShowQuestion();
+                playerAnswer = Console.ReadLine();
+                correctKey = IsCorrectKey(playerAnswer);
+            }
+
+            return int.Parse(playerAnswer);
+
+        }
+
+        private bool IsCorrectKey(string key)
+        {
+            bool isNumber = int.TryParse(key, out int number);
+            if (!isNumber)
+            {
+                return false;
+            }
+            else
+            {
+                if (number > 0 && number < 5)
+                    return true;       
+            }
+
+            return false;
+        }
+
+
     }
 }
 

@@ -2,13 +2,13 @@
 2. Wyświetlić ekran powitalny => OK
 3. Ustawić kategorię pytania na najniższą (100 pkt). => OK
 4. Wylosować jedno pytanie z aktualnej kategorii. => OK
-5. Wyświetlić treść pytania (z czterema odpowiedziami).
-6. Pobranie odpowiedzi od użytkownika.
-7. Walidacja odpowiedzi użytkownika.
+5. Wyświetlić treść pytania (z czterema odpowiedziami). => OK
+6. Pobranie odpowiedzi od użytkownika. => OK (ale do poprawy)
+7. Walidacja odpowiedzi użytkownika. => OK
 
 => Odpowiedź nieprawidłowa
-8. Plansza pech, game over
-9. Koniec aplikacji
+8. Plansza pech, game over => OK
+9. Koniec aplikacji => OK
 
 => Odpowiedź prawidłowa
 8. Sprawdzamy czy to nie było ostatnie pyatnie

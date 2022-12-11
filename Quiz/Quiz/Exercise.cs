@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,6 +52,25 @@ namespace Quiz
             //}
 
             
+        }
+
+
+        void Test3()
+        {
+            var numbers = new List<int>();
+            numbers.Add(67);
+            numbers.Add(15);
+            numbers.Add(289);
+            numbers.Add(113);
+            numbers.Add(8);
+            numbers.Add(51);
+
+
+            Console.WriteLine();
+
+
+            var newNumbers = numbers.Where(x => x < 52).ToList();
+            Console.WriteLine(newNumbers);
         }
 
 
