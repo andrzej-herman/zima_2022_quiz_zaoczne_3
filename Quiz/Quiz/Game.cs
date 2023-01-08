@@ -14,12 +14,22 @@ namespace Quiz
             CreteAllQuestions();
             CurrentCategory = 100;
             Random = new Random();
+            AllCategories = AllQuestions
+                .Select(x => x.Category)
+                .Distinct()
+                .OrderBy(x => x)
+                .ToList();
+
         }
+
+
 
         public List<Question> AllQuestions { get; set; }
         public Question CurrentQuestion { get; set; }
         public int CurrentCategory { get; set; }
         public Random Random { get; set; }
+        public List<int> AllCategories { get; set; }
+        public int CurrentCategoryIndex { get; set; }
 
         public void CreteAllQuestions()
         {
@@ -57,6 +67,19 @@ namespace Quiz
         {
             var answer = CurrentQuestion.Answers.FirstOrDefault(x => x.DisplayOrder== playerAnswer);   
             return answer.IsCorrect;
+        }
+
+
+        public bool IsLastQuestion()
+        {
+            if (CurrentCategoryIndex < 6)
+            {
+                CurrentCategoryIndex++;
+                CurrentCategory = AllCategories[CurrentCategoryIndex];
+                return false;
+            }
+            else
+                return true;
         }
 
 

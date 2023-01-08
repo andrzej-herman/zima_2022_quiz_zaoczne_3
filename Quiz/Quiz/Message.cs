@@ -26,5 +26,26 @@ namespace Quiz
             Console.WriteLine("KONIEC GRY");
             Console.WriteLine();
         }
+
+        public void FinalScreen()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.WriteLine("BRAWO, UDAŁO CI SIĘ UKOŃCZYĆ QUIZ !!!!");
+            Console.WriteLine("KONIEC GRY");
+            Console.WriteLine();
+        }
+
+        public void GoodAnswer()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine();
+            Console.WriteLine("BRAWO,TO POPRAWNA ODPOWIEDŹ !!!!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine();
+            Console.WriteLine("Naciśnij ENTER, aby zobaczyć następne pytanie ...");
+            Console.WriteLine();
+            Console.ReadLine();
+        }
     }
 }

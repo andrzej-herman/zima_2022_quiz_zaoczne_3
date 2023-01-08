@@ -33,6 +33,7 @@ namespace Quiz
 
         public int Display()
         {
+            Console.Clear();
             ShowQuestion();
             var playerAnswer = Console.ReadLine();
             var correctKey = IsCorrectKey(playerAnswer);

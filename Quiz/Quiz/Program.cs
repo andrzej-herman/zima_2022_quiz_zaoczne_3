@@ -11,24 +11,43 @@ var message = new Message();
 // wyświetlamy ekran powitalny
 message.DisplayWelcomeScreen();
 
-// losujemy pytanie z aktualnej kategorii
-game.GetRandomQuestionFromCurrentCategory();
+// gra się toczy w pętli, którą przerywamy w dwóch przypadkach
+// jak się skonczą kategorię
+// i kiedy gracz odpowie źle
 
-// wyświetlanie pytania i pobranie odpowiedzi gracza
-var playerAnswer = game.CurrentQuestion.Display();
-
-// sprawdzamy poprawność odpowiedzi gracza
-var correct = game.CheckPlayerAnswer(playerAnswer);
-
-// budujemy logikę aplikacji w zalezności od poprawności odpowiedzi
-if (correct)
+while(true)
 {
-    // odp prawidłowa
+    // losujemy pytanie z aktualnej kategorii
+    game.GetRandomQuestionFromCurrentCategory();
+
+    // wyświetlanie pytania i pobranie odpowiedzi gracza
+    var playerAnswer = game.CurrentQuestion.Display();
+
+    // sprawdzamy poprawność odpowiedzi gracza
+    var correct = game.CheckPlayerAnswer(playerAnswer);
+
+    // budujemy logikę aplikacji w zalezności od poprawności odpowiedzi
+    if (correct)
+    {
+        if (game.IsLastQuestion())
+        {
+            message.FinalScreen();
+            break;
+        }
+        else
+        {
+            message.GoodAnswer();
+        }
+    }
+    else
+    {
+        message.DisplayLooseAndGameOver();
+        break;
+    }
 }
-else
-{
-    message.DisplayLooseAndGameOver();
-}
+
+
+
 
 
 
